@@ -42,18 +42,6 @@ class PriorityDequeue(T)
     add_unchecked(elem)
   end
 
-  private def add_unchecked(elem : T)
-    size = @size
-    @items[size] = elem
-
-    if size > 0
-      start = get_start_for_sift_up(elem, size)
-      sift_up(start)
-    end
-
-    @size += 1
-  end
-
   # Look at the smallest element in the dequeue. Returns `nil` if empty.
   #
   def peek_min : T?
@@ -166,6 +154,18 @@ class PriorityDequeue(T)
   #  ╚═╝     ╚═╝  ╚═╝╚═╝  ╚═══╝  ╚═╝  ╚═╝   ╚═╝   ╚══════╝  #
   #                                                         #
   ###########################################################
+
+  private def add_unchecked(elem : T)
+    size = @size
+    @items[size] = elem
+
+    if size > 0
+      start = get_start_for_sift_up(elem, size)
+      sift_up(start)
+    end
+
+    @size += 1
+  end
 
   # :nodoc:
   #
