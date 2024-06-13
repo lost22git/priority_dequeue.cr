@@ -167,6 +167,8 @@ class PriorityDequeue(T)
   #                                                         #
   ###########################################################
 
+  # :nodoc:
+  #
   record StartIndexAndLayer, index : UInt32, min_layer : Bool
 
   private def get_start_for_sift_up(child : T, child_index : UInt32) : StartIndexAndLayer
@@ -300,6 +302,8 @@ class PriorityDequeue(T)
     end
   end
 
+  # :nodoc:
+  #
   record ItemAndIndex(T), item : T, index : UInt32
 
   private def get_item(index : UInt32) : ItemAndIndex(T)
