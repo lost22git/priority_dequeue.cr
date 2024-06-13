@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Crystal Docs 1.12.2">
+<meta name="crystal_docs.project_version" content="main">
+<meta name="crystal_docs.project_name" content="priority_dequeue">
+
+
+
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/doc.js"></script>
+
+  <meta name="repository-name" content="priority_dequeue">
+  <title>PriorityDequeue(T) - priority_dequeue main</title>
+  <script type="text/javascript">
+    CrystalDocs.base_path = "";
+  </script>
+</head>
+<body>
+
+<svg class="hidden">
+  <symbol id="octicon-link" viewBox="0 0 16 16">
+    <path fill="currentColor" fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+  </symbol>
+</svg>
+<input type="checkbox" id="sidebar-btn">
+<label for="sidebar-btn" id="sidebar-btn-label">
+  <svg class="open" xmlns="http://www.w3.org/2000/svg" height="2em" width="2em" viewBox="0 0 512 512"><title>Open Sidebar</title><path fill="currentColor" d="M80 96v64h352V96H80zm0 112v64h352v-64H80zm0 112v64h352v-64H80z"></path></svg>
+  <svg class="close" xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" viewBox="0 0 512 512"><title>Close Sidebar</title><path fill="currentColor" d="m118.6 73.4-45.2 45.2L210.7 256 73.4 393.4l45.2 45.2L256 301.3l137.4 137.3 45.2-45.2L301.3 256l137.3-137.4-45.2-45.2L256 210.7Z"></path></svg>
+</label>
+<div class="sidebar">
+  <div class="sidebar-header">
+    <div class="search-box">
+      <input type="search" class="search-input" placeholder="Search..." spellcheck="false" aria-label="Search">
+    </div>
+
+    <div class="project-summary">
+      <h1 class="project-name">
+        <a href="index.html">
+          priority_dequeue
+        </a>
+      </h1>
+
+      <span class="project-version">
+        main
+      </span>
+    </div>
+  </div>
+
+  <div class="search-results hidden">
+    <ul class="search-list"></ul>
+  </div>
+
+  <div class="types-list">
+    <ul>
+  
+  <li class=" current" data-id="priority_dequeue/PriorityDequeue" data-name="prioritydequeue(t)">
+      <a href="PriorityDequeue.html">PriorityDequeue</a>
+      
+    </li>
+  
+</ul>
+
+  </div>
+</div>
+
+
+<div class="main-content">
+<h1 class="type-name">
+
+  <span class="kind">class</span> PriorityDequeue(T)
+
+</h1>
+
+
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="PriorityDequeue.html">PriorityDequeue(T)</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
+
+
+
+
+
+
+
+
+  <h2>
+    <a id="included-modules" class="anchor" href="#included-modules">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Included Modules
+  </h2>
+  <ul class="other-types-list">
+    
+      <li class="other-type">Indexable(T)</li>
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+  <h2>
+    <a id="defined-in" class="anchor" href="#defined-in">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Defined in:
+  </h2>
+  
+    
+      <a href="https://github.com/lost22git/priority_dequeue.cr/blob/c42b2555ccabcef46f12408a3ed2f78942c1723c/src/priority_dequeue.cr#L1" target="_blank">
+        priority_dequeue.cr
+      </a>
+    
+    <br/>
+  
+
+
+
+  
+    <h2>
+      <a id="constant-summary" class="anchor" href="#constant-summary">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+      Constant Summary
+    </h2>
+  
+  <dl>
+    
+      <dt class="entry-const" id="VERSION">
+        <strong>VERSION</strong> = <code><span class="s">&quot;0.1.0&quot;</span></code>
+      </dt>
+      
+    
+  </dl>
+
+
+
+  <h2>
+    <a id="constructors" class="anchor" href="#constructors">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Constructors
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#new%28cap%3AUInt32%3D0%2Ccompare_fn%3AT%2CT-%3EInt32%3D-%3E%28a%3AT%2Cb%3AT%29do%0Aa%3C%3D%3Eb%0Aend%29-class-method" class="signature"><strong>.new</strong>(cap : UInt32 = <span class="n">0</span>, compare_fn : T, T -> Int32 = <span class="o">-&gt;</span>(a : <span class="t">T</span>, b : <span class="t">T</span>) <span class="k">do</span>
+  a <span class="o">&lt;=&gt;</span> b
+<span class="k">end</span>)</a>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+
+
+  <h2>
+    <a id="instance-method-summary" class="anchor" href="#instance-method-summary">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Instance Method Summary
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#%3C%3C%28elem%3AT%29-instance-method" class="signature"><strong>#<<</strong>(elem : T)</a>
+        
+          <div class="summary"><p>Add a new element, maintaining priority.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#add%28elem%3AT%29-instance-method" class="signature"><strong>#add</strong>(elem : T)</a>
+        
+          <div class="summary"><p>Add a new element, maintaining priority.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#cap%3AUInt32-instance-method" class="signature"><strong>#cap</strong> : UInt32</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#del_at%28index%3AUInt32%29%3AT-instance-method" class="signature"><strong>#del_at</strong>(index : UInt32) : T</a>
+        
+          <div class="summary"><p>Delete and return element at index.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#dump%28io%3AIO%29-instance-method" class="signature"><strong>#dump</strong>(io : IO)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#ensure_total_capacity%28new_capacity%3AUInt32%29-instance-method" class="signature"><strong>#ensure_total_capacity</strong>(new_capacity : UInt32)</a>
+        
+          <div class="summary"><p>Ensure that the dequeue can fit at least <code>new_capacity</code> items.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#ensure_unused_capacity%28additional_count%3AUInt32%29-instance-method" class="signature"><strong>#ensure_unused_capacity</strong>(additional_count : UInt32)</a>
+        
+          <div class="summary"><p>Ensure that the dequeue can fit at least <code>additional_count</code> <strong>more</strong> items.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#peek_max%3AT%7CNil-instance-method" class="signature"><strong>#peek_max</strong> : T | Nil</a>
+        
+          <div class="summary"><p>Look at the largest element in the dequeue.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#peek_min%3AT%7CNil-instance-method" class="signature"><strong>#peek_min</strong> : T | Nil</a>
+        
+          <div class="summary"><p>Look at the smallest element in the dequeue.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#pop_max%3AT%7CNil-instance-method" class="signature"><strong>#pop_max</strong> : T | Nil</a>
+        
+          <div class="summary"><p>Pop the largest element from the dequeue.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#pop_min%3AT%7CNil-instance-method" class="signature"><strong>#pop_min</strong> : T | Nil</a>
+        
+          <div class="summary"><p>Pop the smallest element from the dequeue.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#push%28elem%3AT%29-instance-method" class="signature"><strong>#push</strong>(elem : T)</a>
+        
+          <div class="summary"><p>Add a new element, maintaining priority.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#size%3AUInt32-instance-method" class="signature"><strong>#size</strong> : UInt32</a>
+        
+          <div class="summary"><p>Returns the number of elements in this container.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#unsafe_fetch%28index%29%3AT-instance-method" class="signature"><strong>#unsafe_fetch</strong>(index) : T</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#update%28old_elem%3AT%2Cnew_elem%3AT%29-instance-method" class="signature"><strong>#update</strong>(old_elem : T, new_elem : T)</a>
+        
+      </li>
+    
+  </ul>
+
+
+
+<div class="methods-inherited">
+  
+    
+
+
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+    
+
+
+  
+</div>
+
+
+  <h2>
+    <a id="constructor-detail" class="anchor" href="#constructor-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Constructor Detail
+  </h2>
+  
+    <div class="entry-detail" id="new(cap:UInt32=0,compare_fn:T,T-&gt;Int32=-&gt;(a:T,b:T)do
+a&lt;=&gt;b
+end)-class-method">
+      <div class="signature">
+        
+        def self.<strong>new</strong>(cap : UInt32 = <span class="n">0</span>, compare_fn : T, T -> Int32 = <span class="o">-&gt;</span>(a : <span class="t">T</span>, b : <span class="t">T</span>) <span class="k">do</span>
+  a <span class="o">&lt;=&gt;</span> b
+<span class="k">end</span>)
+
+        <a class="method-permalink" href="#new%28cap%3AUInt32%3D0%2Ccompare_fn%3AT%2CT-%3EInt32%3D-%3E%28a%3AT%2Cb%3AT%29do%0Aa%3C%3D%3Eb%0Aend%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/lost22git/priority_dequeue.cr/blob/c42b2555ccabcef46f12408a3ed2f78942c1723c/src/priority_dequeue.cr#L14" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+
+
+
+
+  <h2>
+    <a id="instance-method-detail" class="anchor" href="#instance-method-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Instance Method Detail
+  </h2>
+  
+    <div class="entry-detail" id="&lt;&lt;(elem:T)-instance-method">
+      <div class="signature">
+        
+        def <strong><<</strong>(elem : T)
+
+        <a class="method-permalink" href="#%3C%3C%28elem%3AT%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Add a new element, maintaining priority.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/lost22git/priority_dequeue.cr/blob/c42b2555ccabcef46f12408a3ed2f78942c1723c/src/priority_dequeue.cr#L28" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="add(elem:T)-instance-method">
+      <div class="signature">
+        
+        def <strong>add</strong>(elem : T)
+
+        <a class="method-permalink" href="#add%28elem%3AT%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Add a new element, maintaining priority.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/lost22git/priority_dequeue.cr/blob/c42b2555ccabcef46f12408a3ed2f78942c1723c/src/priority_dequeue.cr#L40" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="cap:UInt32-instance-method">
+      <div class="signature">
+        
+        def <strong>cap</strong> : UInt32
+
+        <a class="method-permalink" href="#cap%3AUInt32-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/lost22git/priority_dequeue.cr/blob/c42b2555ccabcef46f12408a3ed2f78942c1723c/src/priority_dequeue.cr#L8" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="del_at(index:UInt32):T-instance-method">
+      <div class="signature">
+        
+        def <strong>del_at</strong>(index : UInt32) : T
+
+        <a class="method-permalink" href="#del_at%28index%3AUInt32%29%3AT-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Delete and return element at index. Indices are in the
+same order as iterator, which is not necessarily priority order.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/lost22git/priority_dequeue.cr/blob/c42b2555ccabcef46f12408a3ed2f78942c1723c/src/priority_dequeue.cr#L87" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="dump(io:IO)-instance-method">
+      <div class="signature">
+        
+        def <strong>dump</strong>(io : IO)
+
+        <a class="method-permalink" href="#dump%28io%3AIO%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/lost22git/priority_dequeue.cr/blob/c42b2555ccabcef46f12408a3ed2f78942c1723c/src/priority_dequeue.cr#L127" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="ensure_total_capacity(new_capacity:UInt32)-instance-method">
+      <div class="signature">
+        
+        def <strong>ensure_total_capacity</strong>(new_capacity : UInt32)
+
+        <a class="method-permalink" href="#ensure_total_capacity%28new_capacity%3AUInt32%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Ensure that the dequeue can fit at least <code>new_capacity</code> items.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/lost22git/priority_dequeue.cr/blob/c42b2555ccabcef46f12408a3ed2f78942c1723c/src/priority_dequeue.cr#L96" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="ensure_unused_capacity(additional_count:UInt32)-instance-method">
+      <div class="signature">
+        
+        def <strong>ensure_unused_capacity</strong>(additional_count : UInt32)
+
+        <a class="method-permalink" href="#ensure_unused_capacity%28additional_count%3AUInt32%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Ensure that the dequeue can fit at least <code>additional_count</code> <strong>more</strong> items.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/lost22git/priority_dequeue.cr/blob/c42b2555ccabcef46f12408a3ed2f78942c1723c/src/priority_dequeue.cr#L110" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="peek_max:T|Nil-instance-method">
+      <div class="signature">
+        
+        def <strong>peek_max</strong> : T | Nil
+
+        <a class="method-permalink" href="#peek_max%3AT%7CNil-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Look at the largest element in the dequeue. Returns <code>nil</code> if empty</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/lost22git/priority_dequeue.cr/blob/c42b2555ccabcef46f12408a3ed2f78942c1723c/src/priority_dequeue.cr#L55" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="peek_min:T|Nil-instance-method">
+      <div class="signature">
+        
+        def <strong>peek_min</strong> : T | Nil
+
+        <a class="method-permalink" href="#peek_min%3AT%7CNil-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Look at the smallest element in the dequeue. Returns <code>nil</code> if empty.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/lost22git/priority_dequeue.cr/blob/c42b2555ccabcef46f12408a3ed2f78942c1723c/src/priority_dequeue.cr#L47" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="pop_max:T|Nil-instance-method">
+      <div class="signature">
+        
+        def <strong>pop_max</strong> : T | Nil
+
+        <a class="method-permalink" href="#pop_max%3AT%7CNil-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Pop the largest element from the dequeue. Returns <code>nil</code> if empty.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/lost22git/priority_dequeue.cr/blob/c42b2555ccabcef46f12408a3ed2f78942c1723c/src/priority_dequeue.cr#L78" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="pop_min:T|Nil-instance-method">
+      <div class="signature">
+        
+        def <strong>pop_min</strong> : T | Nil
+
+        <a class="method-permalink" href="#pop_min%3AT%7CNil-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Pop the smallest element from the dequeue. Returns <code>nil</code> if empty.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/lost22git/priority_dequeue.cr/blob/c42b2555ccabcef46f12408a3ed2f78942c1723c/src/priority_dequeue.cr#L70" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="push(elem:T)-instance-method">
+      <div class="signature">
+        
+        def <strong>push</strong>(elem : T)
+
+        <a class="method-permalink" href="#push%28elem%3AT%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Add a new element, maintaining priority.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/lost22git/priority_dequeue.cr/blob/c42b2555ccabcef46f12408a3ed2f78942c1723c/src/priority_dequeue.cr#L34" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="size:UInt32-instance-method">
+      <div class="signature">
+        
+        def <strong>size</strong> : UInt32
+
+        <a class="method-permalink" href="#size%3AUInt32-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+            <div class="doc-inherited">
+              Description copied from module Indexable(T)
+            </div>
+          
+          <p>Returns the number of elements in this container.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/lost22git/priority_dequeue.cr/blob/c42b2555ccabcef46f12408a3ed2f78942c1723c/src/priority_dequeue.cr#L10" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="unsafe_fetch(index):T-instance-method">
+      <div class="signature">
+        
+        def <strong>unsafe_fetch</strong>(index) : T
+
+        <a class="method-permalink" href="#unsafe_fetch%28index%29%3AT-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/lost22git/priority_dequeue.cr/blob/c42b2555ccabcef46f12408a3ed2f78942c1723c/src/priority_dequeue.cr#L22" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="update(old_elem:T,new_elem:T)-instance-method">
+      <div class="signature">
+        
+        def <strong>update</strong>(old_elem : T, new_elem : T)
+
+        <a class="method-permalink" href="#update%28old_elem%3AT%2Cnew_elem%3AT%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/lost22git/priority_dequeue.cr/blob/c42b2555ccabcef46f12408a3ed2f78942c1723c/src/priority_dequeue.cr#L114" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+</div>
+
+</body>
+</html>
